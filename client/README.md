@@ -1,3 +1,23 @@
+# 概要
+Webクライアントサイドのアプリを開発する部分
+React + TypeScript + Viteで構築
+リンターはESLintを使用
+フォーマッターはBiomeを使用
+
+# 環境構築
+1. Node.jsのインストール
+   1. nvmやnodebrewを使用してNode.jsをインストール
+      1. nvm(特にWindowsの場合)
+         1. [nvm-windows](https://github.com/coreybutler/nvm-windows)を使用
+         2. [Microsoftのnvmインストールガイド](https://learn.microsoft.com/ja-jp/windows/dev-environment/javascript/nodejs-on-windows)
+   2. `../web-client-api/client`ディレクトリで`npm install`を実行
+   3. `npm run dev`でクライアントサイドのアプリが起動するはず
+
+
+
+
+
+# ここより下はViteにより作成されたテンプレ
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
