@@ -10,8 +10,15 @@ React + TypeScript + Viteで構築
       1. nvm(特にWindowsの場合)
          1. [nvm-windows](https://github.com/coreybutler/nvm-windows)を使用
          2. [Microsoftのnvmインストールガイド](https://learn.microsoft.com/ja-jp/windows/dev-environment/javascript/nodejs-on-windows)
+      2. node v22.9.0, npm v10.8.3で動作確認済み
    2. `../web-client-api/client`ディレクトリで`npm install`を実行
    3. `npm run dev`でクライアントサイドのアプリが起動するはず
+   4. 困ったら聞いて
+2. RubyとRuby on Railsのインストール
+   1. ruby v3.3.5, 
+   2. rails インストール
+      1. `gem install rails -v 7.0.4.3` コマンドを実行
+      2. `gem install bundler -v 2.5.6` コマンドを実行
 
 
 
