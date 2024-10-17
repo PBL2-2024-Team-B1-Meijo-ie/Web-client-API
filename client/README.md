@@ -14,11 +14,6 @@ React + TypeScript + Viteで構築
    2. `../web-client-api/client`ディレクトリで`npm install`を実行
    3. `npm run dev`でクライアントサイドのアプリが起動するはず
    4. 困ったら聞いて
-2. RubyとRuby on Railsのインストール
-   1. ruby v3.3.5, 
-   2. rails インストール
-      1. `gem install rails -v 7.0.4.3` コマンドを実行
-      2. `gem install bundler -v 2.5.6` コマンドを実行
 
 
 
