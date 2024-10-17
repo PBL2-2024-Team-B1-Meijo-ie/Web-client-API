@@ -1,9 +1,17 @@
 # 環境構築手順
-2. RubyとRuby on Railsのインストール
-   1. ruby v3.3.5, 
+動作確認はLinux環境で行っています．
+
+1. RubyとRuby on Railsのインストール
+   1. ruby v3.3.5をインストール,
+      1. Linuxの場合は`rbenv`を使用
+      2. Windowsの場合は該当バージョンのインストーラを使用
+         1. 下記参考リンクを参照
+      3. `ruby -v`コマンドでバージョンが表示されれば成功 
    2. rails インストール
       1. `gem install rails -v 7.0.4.3` コマンドを実行
+         1. `rails -v`コマンドでバージョンが表示されれば成功
       2. `gem install bundler -v 2.5.6` コマンドを実行
+         1. `bundler -v`コマンドでバージョンが表示されれば成功
    3. 必要なライブラリのインストール
       1. `bundle install` コマンドを実行
    4. サーバーの起動
@@ -12,6 +20,7 @@
       3. ![alt text](image.png)
 
 ## 参考
+- [Rubyの開発環境を用意しよう！（Windows用）](https://prog-8.com/docs/ruby-env-win)
 - [Ruby on Railsの環境構築をしてみよう！(Windows)](https://prog-8.com/docs/rails-env-win)
 - [Rails チュートリアル](https://railstutorial.jp/chapters/beginning?version=7.0#sec-installing_rails)
 - [Rails ガイド](https://railsguides.jp/api_app.html)
