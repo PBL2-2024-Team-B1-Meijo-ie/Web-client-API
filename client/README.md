@@ -5,7 +5,9 @@ React + TypeScript + Viteで構築
 フォーマッターはBiomeを使用
 
 # 環境構築
-1. Node.jsのインストール
+1. 作業ディレクトリを移動
+   1. `cd client` コマンドを実行
+2. Node.jsのインストール
    1. nvmやnodebrewを使用してNode.jsをインストール
       1. nvm(特にWindowsの場合)
          1. [nvm-windows](https://github.com/coreybutler/nvm-windows)を使用

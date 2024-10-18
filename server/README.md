@@ -1,7 +1,9 @@
 # 環境構築手順
 動作確認はLinux環境で行っています．
 
-1. RubyとRuby on Railsのインストール
+1. 作業ディレクトリを移動
+   1. `cd server` コマンドを実行
+2. RubyとRuby on Railsのインストール
    1. ruby v3.3.2をインストール,
       1. Linuxの場合は`rbenv`を使用
       2. Windowsの場合は該当バージョンのインストーラを使用
