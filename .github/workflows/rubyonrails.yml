@@ -25,6 +25,10 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+    # Jobの作業ディレクトリを変更
+    defaults:
+      run:
+        working-directory: ./server
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -34,19 +38,20 @@ jobs:
         with:
           bundler-cache: true
       - name: install dependencies
-        working-directory: ./server
         run: bundle install
       # Add or replace database setup steps here
       - name: Set up database schema
-        working-directory: ./server
         run: bin/rails db:schema:load
       # Add or replace test runners here
       - name: Run tests
-        working-directory: ./server
         run: bin/rake
 
   lint:
     runs-on: ubuntu-latest
+    # Jobの作業ディレクトリを変更
+    defaults:
+      run:
+        working-directory: ./server
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -55,18 +60,13 @@ jobs:
         with:
           bundler-cache: true
       - name: install dependencies
-        working-directory: ./server
         run: bundle install
       - name: Generate binstubs
-        working-directory: ./server
         run: bundle binstubs bundler-audit brakeman rubocop
       # Add or replace any other lints here
       - name: Security audit dependencies
-        working-directory: ./server
         run: bin/bundler-audit --update
       - name: Security audit application code
-        working-directory: ./server
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
-        working-directory: ./server
         run: bin/rubocop --parallel
