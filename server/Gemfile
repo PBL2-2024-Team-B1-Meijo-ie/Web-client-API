@@ -49,3 +49,8 @@ end
 
 # GitHubActionでは，テスト実行にpostgresqlが必要なため，追加
 gem "pg", "~> 1.2"
+
+# GitHubActionでのリント実行に必要なgem
+gem "bundler-audit", require: false
+gem "brakeman", require: false
+gem "rubocop", require: false
