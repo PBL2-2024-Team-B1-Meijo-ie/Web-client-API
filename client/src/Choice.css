@@ -1,0 +1,9 @@
+.Choice{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: darkslateblue;
+}
+button{
+  width: 50%;
+}
