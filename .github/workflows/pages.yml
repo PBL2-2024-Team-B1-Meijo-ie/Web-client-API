@@ -35,8 +35,8 @@ jobs:
           # yarnのキャッシュを効かすために設定 (npmのかたはnpmで)
           cache: npm
           cache-dependency-path: ./client/package-lock.json
-      - name: npm install
-        run: npm install
+      - name: npm ci
+        run: npm ci
       - name: npm build
         run: npm build
         # GIthubページは https://USERNAME.github.io/REPOSITORY_NAME/
