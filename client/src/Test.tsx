@@ -1,10 +1,7 @@
-import Test2 from "./Test2.tsx"
-
 function Test(){
   return(
     <>
-      <h1>Test OK</h1>
-      <Test2 />
+      <h1>時刻表表示したいよ</h1>
     </>
   );
 }
