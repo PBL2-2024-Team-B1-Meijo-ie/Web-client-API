@@ -34,6 +34,7 @@ jobs:
           node-version: 22
           # yarnのキャッシュを効かすために設定 (npmのかたはnpmで)
           cache: npm
+          cache-dependency-path: ./client/package-lock.json
       - name: npm install
         run: npm install
       - name: npm build
