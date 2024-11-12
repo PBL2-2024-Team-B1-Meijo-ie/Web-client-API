@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import L from 'leaflet';//エラーになってるけど動きます...
 import 'leaflet/dist/leaflet.css';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 export const Map: React.FC = () => {
   const position: [number, number] = [35.13589, 136.97564];//名城大学天白キャンパスの座標

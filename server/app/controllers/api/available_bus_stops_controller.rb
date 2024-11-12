@@ -1,9 +1,9 @@
 class Api::AvailableBusStopsController < ApplicationController
   def index
     # フォームやAJAXリクエストから送信されたデータを'params'で受け取る
-    busID_on=params[:busID_on].to_i
-    busID_off=params[:busID_off].to_i
-    date=params[:date]
+    busID_on=params[:busID_on].to_i # busID_on：乗車バス停のID
+    busID_off=params[:busID_off].to_i # busID_off：降車バス停のID
+    date=params[:date] # date：バスを利用する日付
 
     if busID_on.nil? || busID_off.nil? || date.nil?
       render json: { message: "必要なパラメータが不足しています" }, status: :bad_request
