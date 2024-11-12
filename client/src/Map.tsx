@@ -1,7 +1,7 @@
 /* このサイトから引用，その後ChatGPTでtsx形式に改変 https://zenn.dev/micronn/articles/776c702089f16e */
 
 import React, { useEffect } from 'react';
-import L from 'leaflet';
+import L from 'leaflet';//エラーになってるけど動きます...
 import 'leaflet/dist/leaflet.css';
 
 export const Map: React.FC = () => {
@@ -23,12 +23,13 @@ export const Map: React.FC = () => {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
-    // マーカーの追加
+
+    // マーカーの追加　マーカー増やすときは変数名も新しく作る
     const marker1 = L.marker(marker_position1).addTo(map);
-    marker1.bindPopup('コンビニ前<br/> <button>時刻表はこちら</button>');
+    marker1.bindPopup('コンビニ前<br/><a href="https://www.meijo-u.ac.jp/">時刻表はこちら</a>');//とりあえずaタグで作成する
 
     const marker2 = L.marker(marker_position2).addTo(map);
-    marker2.bindPopup('二つ目<br/> <button>時刻表はこちら</button>');
+    marker2.bindPopup('二つ目<br/><a href="https://www.meijo-u.ac.jp/">時刻表はこちら</a>');
 
 
     // コンポーネントのアンマウント時にマップインスタンスを削除
@@ -37,7 +38,7 @@ export const Map: React.FC = () => {
     };
   }, [position, zoom]);
 
-  return <div id="map" style={{ height: '88vh', width: '100%' }} />;
+  return <div id="map" style={{ height: '84vh', width: '100%' }} />;//地図のサイズを変更できる
 };
 
 
