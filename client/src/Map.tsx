@@ -26,10 +26,10 @@ export const Map: React.FC = () => {
 
     // マーカーの追加　マーカー増やすときは変数名も新しく作る
     const marker1 = L.marker(marker_position1).addTo(map);
-    marker1.bindPopup('コンビニ前<br/><a href="https://www.meijo-u.ac.jp/">時刻表はこちら</a>');//とりあえずaタグで作成する
+    marker1.bindPopup('コンビニ前<br/><a href="https://www.meijo-u.ac.jp/" target="_blank" rel="noopener noreferrer">時刻表はこちら</a>');//とりあえずaタグで作成する
 
     const marker2 = L.marker(marker_position2).addTo(map);
-    marker2.bindPopup('二つ目<br/><a href="https://www.meijo-u.ac.jp/">時刻表はこちら</a>');
+    marker2.bindPopup('二つ目<br/><a href="https://www.meijo-u.ac.jp/" target="_blank" rel="noopener noreferrer">時刻表はこちら</a>');
 
 
     // コンポーネントのアンマウント時にマップインスタンスを削除
