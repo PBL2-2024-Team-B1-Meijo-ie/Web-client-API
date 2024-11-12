@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :healths
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  namespace :api do
+    resources :available_bus_stops, only: [:index]
+    resources :reservations, only: [:index]
+    resources :buses, only: [:index]
+  end
+  
 end

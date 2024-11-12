@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Reservation System</title>
+  </head>
+  <body>
+    <h1>Bus Reservation</h1>
+
+    <!-- Input fields for the bus stops and departure time -->
+    <label for="busID_on">Departure Bus Stop ID:</label>
+    <input type="number" id="busID_on" name="busID_on" /><br /><br />
+
+    <label for="busID_off">Arrival Bus Stop ID:</label>
+    <input type="number" id="busID_off" name="busID_off" /><br /><br />
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" /><br /><br />
+
+    <label for="departure_time">Departure Time (HH:MM):</label>
+    <input type="time" id="departure_time" name="departure_time" /><br /><br />
+
+    <button onclick="makeReservation()">Check Reservation</button>
+
+    <h2>Response</h2>
+    <pre id="response"></pre>
+
+    <script>
+      async function makeReservation() {
+        // Get values from input fields
+        const busID_on = document.getElementById("busID_on").value;
+        const busID_off = document.getElementById("busID_off").value;
+        const date = document.getElementById("date").value;
+        const departure_time = document.getElementById("departure_time").value;
+
+        // Send request to backend
+        try {
+          const response = await fetch(
+            `/api/reservations?busID_on=${busID_on}&busID_off=${busID_off}&date=${date}&departure_time=${departure_time}`
+          );
+
+          // Check if response is okay
+          if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+          }
+
+          // Parse JSON response
+          const data = await response.json();
+
+          // Display the response data in the <pre> tag
+          document.getElementById("response").textContent = JSON.stringify(
+            data,
+            null,
+            2
+          );
+        } catch (error) {
+          document.getElementById(
+            "response"
+          ).textContent = `Failed to fetch data: ${error.message}`;
+        }
+      }
+    </script>
+  </body>
+</html>

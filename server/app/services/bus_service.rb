@@ -1,0 +1,2 @@
+class BusService < ApplicationRecord
+end
