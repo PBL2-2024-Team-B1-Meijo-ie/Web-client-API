@@ -1,3 +1,3 @@
-class Bus < ApplicationRecordback_tables
+class Bus < ApplicationRecord
   validates :id, presence: true 
 end
