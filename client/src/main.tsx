@@ -8,6 +8,10 @@ import "./index.css";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Head />
+  </StrictMode>,
+);
+createRoot(document.getElementById("map")!).render(
+  <StrictMode>
     <Map />
     <Choice />
   </StrictMode>,

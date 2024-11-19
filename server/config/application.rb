@@ -23,5 +23,15 @@ module Server
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    # CORS の設定を追加
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:3000'  # フロントエンドのオリジンを指定
+        resource '*',                    # すべてのリソースを許可
+          headers: :any,                # すべてのヘッダーを許可
+          methods: [:get, :post, :put, :patch, :delete, :options, :head], # 許可するHTTPメソッド
+          credentials: true             # 必要に応じて設定（Cookie 送信など）
+      end
+    end
   end
 end

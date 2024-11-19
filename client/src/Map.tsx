@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 import L from 'leaflet';//エラーになってるけど動きます...
 import 'leaflet/dist/leaflet.css';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 export const Map: React.FC = () => {
   const position: [number, number] = [35.13589, 136.97564];//名城大学天白キャンパスの座標
@@ -27,11 +26,10 @@ export const Map: React.FC = () => {
 
     // マーカーの追加　マーカー増やすときは変数名も新しく作る
     const marker1 = L.marker(marker_position1).addTo(map);
-    marker1.bindPopup('コンビニ前<br/><a href="https://www.meijo-u.ac.jp/" target="_blank" rel="noopener noreferrer">時刻表はこちら</a>');//とりあえずaタグで作成する
+    marker1.bindPopup('コンビニ前<br/><a href="http://127.0.0.1:3000/?" target="_blank" rel="noopener noreferrer">時刻表はこちら</a>');//とりあえずaタグで作成する
 
     const marker2 = L.marker(marker_position2).addTo(map);
-    marker2.bindPopup('二つ目<br/><a href="https://www.meijo-u.ac.jp/" target="_blank" rel="noopener noreferrer">時刻表はこちら</a>');
-
+    marker2.bindPopup('二つ目<br/><a href="http://127.0.0.1:3000/?" target="_blank" rel="noopener noreferrer">時刻表はこちら</a>');
 
     // コンポーネントのアンマウント時にマップインスタンスを削除
     return () => {
@@ -39,7 +37,7 @@ export const Map: React.FC = () => {
     };
   }, [position, zoom]);
 
-  return <div id="map" style={{ height: '84vh', width: '100%' }} />;//地図のサイズを変更できる
+  return <div id="map" style={{ height: '88vh', width: '100%' }} />;//地図のサイズを変更できる
 };
 
 

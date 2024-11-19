@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>バス停情報取得</title>
+    <link rel="icon" href="<%= asset_path('favicon.ico') %>" />
+    <script src="../server/public/javascript/script.js" defer></script>
+  </head>
+  <body>
+    <h1>バス停情報取得フォーム</h1>
+    <form id="busForm">
+      <label for="busID_on">乗車バス停ID:</label>
+      <input type="number" id="busID_on" required />
+
+      <label for="busID_off">降車バス停ID:</label>
+      <input type="number" id="busID_off" required />
+
+      <label for="date">日付:</label>
+      <input type="date" id="date" required />
+
+      <button type="submit">情報取得</button>
+    </form>
+
+    <div id="result"></div>
+  </body>
+</html>
