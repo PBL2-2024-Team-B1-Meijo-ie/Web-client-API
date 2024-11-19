@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_18_020814) do
     t.text "reserveData"
   end
 
-  create_table "storage", id: false, force: :cascade do |t|
+  create_table "storages", id: false, force: :cascade do |t|
     t.integer "onbusstop_id"
     t.text "reserveTime"
     t.text "reserveDate"
