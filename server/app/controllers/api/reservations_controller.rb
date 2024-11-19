@@ -1,3 +1,4 @@
+#動作確認
 class Api::ReservationsController < ApplicationController
   def index
     busID_on=params[:busID_on].to_i
@@ -49,9 +50,9 @@ class Api::ReservationsController < ApplicationController
 
 
     existing_record=Storage.find_by(
-      godef_on: godef_on,
-      departure_time: departure_time,
-      date: date
+      onbusstop_id: godef_on,
+      reserveTime: departure_time,
+      reserveDate: date
     )
 
     if existing_record
@@ -60,13 +61,26 @@ class Api::ReservationsController < ApplicationController
     else
       count=4
       Storage.create(
-      godef_on: godef_on,
-      departure_time: departure_time,
-      date:date,
+      onbusstop_id: godef_on,
+      reserveTime: departure_time,
+      reserveDate:date,
       peopleCount: count
     )
     end
-    
+    #メール送信処理
+    user=User.find_by(userid:1)
+    if user&.mailed.present?
+      begin
+        ReservationMailer.with(email:user.mailed, godef_on:godef_on, godef_off:godef_off, arrival_time:formatted_arrival_time).template_sentence.deliver_now
+
+      rescue StandardError =>e
+        render json: {error:"メール送信に失敗しました:#{e.message}"}, status: :internal_server_error
+        return
+      end
+    else
+      render json: { error: "メールアドレスが見つかりません" }, status: :not_found
+      return
+    end
     render json: { 
       godef_on: godef_on, 
       godef_off: godef_off, 

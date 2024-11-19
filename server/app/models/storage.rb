@@ -1,3 +1,3 @@
 class Storage < ApplicationRecord
-  validates :onbusstop_id,:reserveTime,:reserveData,:peopleCount, presence: true 
+  validates :onbusstop_id,:reserveTime,:reserveDate,:peopleCount, presence: true 
 end

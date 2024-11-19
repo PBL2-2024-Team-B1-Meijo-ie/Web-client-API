@@ -29,8 +29,6 @@
         // 結果を表示
         document.getElementById('result').innerHTML = JSON.stringify(data, null, 2);
 
-        // index2.htmlに自動遷移
-        window.location.href = "/index2.html"; 
 
     } catch (error) {
         console.error('エラー:', error);

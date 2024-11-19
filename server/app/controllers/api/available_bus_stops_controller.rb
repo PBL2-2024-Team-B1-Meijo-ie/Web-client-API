@@ -1,3 +1,4 @@
+#動作確認
 class Api::AvailableBusStopsController < ApplicationController
   def index
     # フォームやAJAXリクエストから送信されたデータを'params'で受け取る
