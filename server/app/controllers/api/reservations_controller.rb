@@ -43,30 +43,21 @@ class Api::ReservationsController < ApplicationController
       end
       godef_diff=godef_on-godef_off
       arrival_time=departure_time+godef_diff.minutes
-    else render json:{error: "同じバス停が指定されました"},status: :bad_request
+    else 
+      render json:{error: "同じバス停が指定されました"},status: :bad_request
+      return
     end
     # 到着時間をフォーマット
     formatted_arrival_time = arrival_time.strftime("%Y-%m-%d %H:%M") 
 
 
-    existing_record=Storage.find_by(
+    # 新しいレコードを作成
+    new_record = Storage.new(
       onbusstop_id: godef_on,
-      reserveTime: departure_time,
-      reserveDate: date
+      reserveTime: departure_time_str,
+      reserveDate: date,
     )
 
-    if existing_record
-      count=existing_record.peopleCount-1
-      existing_record.update(peopleCount: count)
-    else
-      count=4
-      Storage.create(
-      onbusstop_id: godef_on,
-      reserveTime: departure_time,
-      reserveDate:date,
-      peopleCount: count
-    )
-    end
     #メール送信処理
     user=User.find_by(userid:1)
     if user&.mailed.present?

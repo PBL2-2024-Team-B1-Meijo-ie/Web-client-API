@@ -73,9 +73,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_18_020814) do
     t.integer "peopleCount"
   end
 
-  create_table "user", id: false, force: :cascade do |t|
+  create_table "users", id: false, force: :cascade do |t|
     t.integer "userid"
-    t.text "mailad"
+    t.text "mailed"
   end
 
 end
