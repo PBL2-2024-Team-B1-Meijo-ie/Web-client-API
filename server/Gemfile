@@ -56,3 +56,10 @@ gem "pg", "~> 1.2"
 # gem "bundler-audit", require: false
 # gem "brakeman", require: false
 # gem "rubocop", require: false
+gem 'ostruct'
+gem 'logger'
+gem 'base64'
+gem 'bigdecimal'
+gem 'mutex_m'
+gem 'drb'
+gem 'rack-cors'
