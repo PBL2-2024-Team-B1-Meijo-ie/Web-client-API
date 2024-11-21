@@ -43,8 +43,6 @@ jobs:
         GITHUB_PAGES: true
     - run: pwd
     - run: ls -la
-    - name: creat dist directory
-      run: mkdir dist
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3.0.1
       with:
