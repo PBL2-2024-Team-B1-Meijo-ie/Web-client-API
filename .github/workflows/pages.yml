@@ -41,6 +41,7 @@ jobs:
     - run: npm run build
       env:
         GITHUB_PAGES: true
+    - run: pwd
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3.0.1
       with:
