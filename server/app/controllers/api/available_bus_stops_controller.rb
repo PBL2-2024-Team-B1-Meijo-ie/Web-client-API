@@ -1,7 +1,7 @@
 #動作確認
 class Api::AvailableBusStopsController < ApplicationController
   def index
-    # フォームやAJAXリクエストから送信されたデータを'params'で受け取る
+    # フォームやAJAXリクエストから送信されたデータをparamsで受け取る
     busID_on=params[:busID_on].to_i # 出発バス停ID
     busID_off=params[:busID_off].to_i # 到着バス停ID
     date=params[:date] # 予約日
