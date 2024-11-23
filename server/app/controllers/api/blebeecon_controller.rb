@@ -12,7 +12,7 @@ class Api::BlebeeconController < ApplicationController
         end
 
         ##変数に格納したデータをデータベースに新しく追加する
-        BLEbeecon.create(
+        Blebeecon.create(
             beecon_id: beeconID,
             device_id: deviceID
         )
