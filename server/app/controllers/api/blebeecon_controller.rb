@@ -3,7 +3,7 @@ class Api::BlebeeconController < ApplicationController
         ##アプリ側から送られるビーコンのデータを格納する
         #アプリから送られたデータを'params'で受け取る
         beeconID=params[:beeconID].to_i
-        deviceID=paams[:deviceID].to_i
+        deviceID=params[:deviceID].to_i
 
         #変数にデータが存在するか判定
         if beeconID.nil? || deviceID.nil?
@@ -17,3 +17,4 @@ class Api::BlebeeconController < ApplicationController
             device_id: deviceID
         )
     end
+end

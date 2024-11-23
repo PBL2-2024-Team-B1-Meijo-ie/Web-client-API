@@ -1,3 +1,4 @@
+# 動作確認
 class Api::RaspiController < ApplicationController
     def index
         ##ラズパイから送られる情報を変数に格納する
@@ -20,4 +21,6 @@ class Api::RaspiController < ApplicationController
             lon: lon,
             time: time
         )
+        render json:{message:"データを追加できました"},status: :created
     end
+end
