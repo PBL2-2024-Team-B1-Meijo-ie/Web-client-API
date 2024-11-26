@@ -78,4 +78,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_18_020814) do
     t.text "mailed"
   end
 
+  create_table "blebeecon", id: false, force: :cascade do |t|
+    t.integer "device_id"
+    t.integer "beecon_id"
+  end
+
 end
