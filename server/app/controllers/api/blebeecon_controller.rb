@@ -1,5 +1,5 @@
 class Api::BlebeeconController < ApplicationController
-    def index
+    def create
         ##アプリ側から送られるビーコンのデータを格納する
         #アプリから送られたデータを'params'で受け取る
         beeconID=params[:beeconID].to_i

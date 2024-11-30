@@ -1,6 +1,6 @@
 # 動作確認
 class Api::RaspiController < ApplicationController
-    def index
+    def create
         ##ラズパイから送られる情報を変数に格納する
         #ラズパイから送られたデータを'params'で受け取る
         buspositionID = params[:buspositionID].to_i
