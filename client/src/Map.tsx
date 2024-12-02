@@ -26,10 +26,10 @@ export const Map: React.FC = () => {
 
     // マーカーの追加　マーカー増やすときは変数名も新しく作る
     const marker1 = L.marker(marker_position1).addTo(map);
-    marker1.bindPopup('コンビニ前<br/><a href="http://127.0.0.1:3000/?" target="_blank" rel="noopener noreferrer">時刻表はこちら</a>');//とりあえずaタグで作成する
+    marker1.bindPopup('コンビニ前<br/><a href="http://127.0.0.1:3000/?" target="_blank" rel="noopener noreferrer">予約はこちら</a>');//とりあえずaタグで作成する
 
     const marker2 = L.marker(marker_position2).addTo(map);
-    marker2.bindPopup('二つ目<br/><a href="http://127.0.0.1:3000/?" target="_blank" rel="noopener noreferrer">時刻表はこちら</a>');
+    marker2.bindPopup('二つ目<br/><a href="http://127.0.0.1:3000/?" target="_blank" rel="noopener noreferrer">予約はこちら</a>');
 
     // コンポーネントのアンマウント時にマップインスタンスを削除
     return () => {
@@ -37,7 +37,7 @@ export const Map: React.FC = () => {
     };
   }, [position, zoom]);
 
-  return <div id="map" style={{ height: '88vh', width: '100%' }} />;//地図のサイズを変更できる
+  return <div id="map" style={{ height: '100vh', width: '100%' }} />;//地図のサイズを変更できる
 };
 
 

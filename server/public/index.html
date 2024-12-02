@@ -6,22 +6,173 @@
     <title>バス停情報取得</title>
     <link rel="icon" href="<%= asset_path('favicon.ico') %>" />
     <script src="/javascript/script.js" defer></script>
+    <style>
+      body, html {
+            height: 100%; /* 高さを100%に設定 */
+            margin: 0; /* デフォルトのマージンをリセット */
+            display: grid;
+            place-items: center; /* 横・縦両方向の中央配置 */
+        }
+      #TimeTable{
+        display: none;
+        background-color: rgb(225, 145, 33);
+        padding: 10px;
+        width: 65%;
+        text-align: center;
+      }
+      #TimeTable button{
+        height: 4vw;
+        width: 7vw;
+        margin: 5px;
+      }
+      .inputs{
+        text-align: center;
+      }
+      .odd{
+        margin: 10px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0.5vw;
+        padding-bottom: 0.5vw;
+        background-color: whitesmoke;
+      }
+      .even{
+        margin: 10px;
+        padding-top: 0.5vw;
+        padding-bottom: 0.5vw;
+        background-color: rgb(131, 131, 131);
+      }
+      .clock{
+        display: inline;
+        width: 0px;
+        height: 100px;
+        font-size: 3vw;
+        margin-right: 5px;
+      }
+    </style>
   </head>
   <body>
-    <h1>バス停情報取得フォーム</h1>
-    <form id="busForm">
-      <label for="busID_on">乗車バス停ID:</label>
-      <input type="number" id="busID_on" required />
+    <h1>バス予約</h1>
+    <div class="inputs">
+      <form id="busForm">
+        <label for="busID_on">乗車バス停ID:</label>
+        <input type="number" id="busID_on" required />
 
-      <label for="busID_off">降車バス停ID:</label>
-      <input type="number" id="busID_off" required />
+        <label for="busID_off">降車バス停ID:</label>
+        <input type="number" id="busID_off" required />
 
-      <label for="date">日付:</label>
-      <input type="date" id="date" required />
+        <label for="date">日付:</label>
+        <input type="date" id="date" required />
 
-      <button type="submit">情報取得</button>
-    </form>
-
-    <div id="result"></div>
+        <button type="submit" onclick="document.getElementById('TimeTable').style.display = 'block';">情報取得</button>
+      </form>
+    </div>
+    <div id="TimeTable">
+      <div id="7result" class="odd">
+        <div class="clock">7</div >
+        <button id="7result_1result" onclick="reserve('7:00')">00</button>
+        <button id="7result_2result" onclick="reserve('7:15')">15</button>
+        <button id="7result_3result" onclick="reserve('7:30')">30</button>
+        <button id="7result_4result" onclick="reserve('7:45')">45</button>
+      </div>
+      <div id="8result" class="even">
+        <div class="clock">8</div >
+        <button id="8result_1result" onclick="reserve('8:00')">00</button>
+        <button id="8result_2result" onclick="reserve('8:15')">15</button>
+        <button id="8result_3result" onclick="reserve('8:30')">30</button>
+        <button id="8result_4result" onclick="reserve('8:45')">45</button>
+      </div>
+      <div id="9result" class="odd">
+        <div class="clock">9</div >
+        <button id="9result_1result" onclick="reserve('9:00')">00</button>
+        <button id="9result_2result" onclick="reserve('9:15')">15</button>
+        <button id="9result_3result" onclick="reserve('9:30')">30</button>
+        <button id="9result_4result" onclick="reserve('9:45')">45</button>
+      </div>
+      <div id="10result" class="even">
+        <div class="clock">10</div >
+        <button id="10result_1result" onclick="reserve('10:00')">00</button>
+        <button id="10result_2result" onclick="reserve('10:15')">15</button>
+        <button id="10result_3result" onclick="reserve('10:30')">30</button>
+        <button id="10result_4result" onclick="reserve('10:45')">45</button>
+      </div>
+      <div id="11result" class="odd">
+        <div class="clock">11</div >
+        <button id="11result_1result" onclick="reserve('11:00')">00</button>
+        <button id="11result_2result" onclick="reserve('11:15')">15</button>
+        <button id="11result_3result" onclick="reserve('11:30')">30</button>
+        <button id="11result_4result" onclick="reserve('11:45')">45</button>
+      </div>
+      <div id="12result" class="even">
+        <div class="clock">12</div >
+        <button id="12result_1result" onclick="reserve('12:00')">00</button>
+        <button id="12result_2result" onclick="reserve('12:15')">15</button>
+        <button id="12result_3result" onclick="reserve('12:30')">30</button>
+        <button id="12result_4result" onclick="reserve('12:45')">45</button>
+      </div>
+      <div id="13result" class="odd">
+        <div class="clock">13</div >
+        <button id="13result_1result" onclick="reserve('13:00')">00</button>
+        <button id="13result_2result" onclick="reserve('13:15')">15</button>
+        <button id="13result_3result" onclick="reserve('13:30')">30</button>
+        <button id="13result_4result" onclick="reserve('13:45')">45</button>
+      </div>
+      <div id="14result" class="even">
+        <div class="clock">14</div >
+        <button id="14result_1result" onclick="reserve('14:00')">00</button>
+        <button id="14result_2result" onclick="reserve('14:15')">15</button>
+        <button id="14result_3result" onclick="reserve('14:30')">30</button>
+        <button id="14result_4result" onclick="reserve('14:45')">45</button>
+      </div>
+      <div id="15result" class="odd">
+        <div class="clock">15</div >
+        <button id="15result_1result" onclick="reserve('15:00')">00</button>
+        <button id="15result_2result" onclick="reserve('15:15')">15</button>
+        <button id="15result_3result" onclick="reserve('15:30')">30</button>
+        <button id="15result_4result" onclick="reserve('15:45')">45</button>
+      </div>
+      <div id="16result" class="even">
+        <div class="clock">16</div >
+        <button id="16result_1result" onclick="reserve('16:00')">00</button>
+        <button id="16result_2result" onclick="reserve('16:15')">15</button>
+        <button id="16result_3result" onclick="reserve('16:30')">30</button>
+        <button id="16result_4result" onclick="reserve('16:45')">45</button>
+      </div>
+      <div id="17result" class="odd">
+        <div class="clock">17</div >
+        <button id="17result_1result" onclick="reserve('17:00')">00</button>
+        <button id="17result_2result" onclick="reserve('17:15')">15</button>
+        <button id="17result_3result" onclick="reserve('17:30')">30</button>
+        <button id="17result_4result" onclick="reserve('17:45')">45</button>
+      </div>
+      <div id="18result" class="even">
+        <div class="clock">18</div >
+        <button id="18result_1result" onclick="reserve('18:00')">00</button>
+        <button id="18result_2result" onclick="reserve('18:15')">15</button>
+        <button id="18result_3result" onclick="reserve('18:30')">30</button>
+        <button id="18result_4result" onclick="reserve('18:45')">45</button>
+      </div>
+      <div id="19result" class="odd">
+        <div class="clock">19</div >
+        <button id="19result_1result" onclick="reserve('19:00')">00</button>
+        <button id="19result_2result" onclick="reserve('19:15')">15</button>
+        <button id="19result_3result" onclick="reserve('19:30')">30</button>
+        <button id="19result_4result" onclick="reserve('19:45')">45</button>
+      </div>
+      <div id="20result" class="even">
+        <div class="clock">20</div >
+        <button id="20result_1result" onclick="reserve('20:00')">00</button>
+        <button id="20result_2result" onclick="reserve('20:15')">15</button>
+        <button id="20result_3result" onclick="reserve('20:30')">30</button>
+        <button id="20result_4result" onclick="reserve('20:45')">45</button>
+      </div>
+      <div id="21result" class="odd">
+        <div class="clock">21</div >
+        <button id="21result_1result" onclick="reserve('21:00')">00</button>
+        <button id="21result_2result" onclick="reserve('21:15')">15</button>
+        <button id="21result_3result" onclick="reserve('21:30')">30</button>
+        <button id="21result_4result" onclick="reserve('21:45')">45</button>
+      </div>
+    </div>  
   </body>
 </html>
