@@ -29,70 +29,71 @@ document.getElementById('busForm').addEventListener('submit', async function(eve
 
         // 結果を表示
         const busTime = Array(15).fill(null).map(() => Array(4).fill(null));
-        const idx = Array(15).fill(0);
+        const idx = Array(15).fill(null);
 
         for(var i = 0; i < 57; i++){
             const dateTime = new Date(data.message[i].startTime);
             dateHour = dateTime.getHours();
+            dateMini = dateTime.getMinutes();
             switch(dateHour){
                 case 7:
-                    busTime[0][idx[0]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[0][idx[0]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[0]+=1; 
                     break;
                 case 8:
-                    busTime[1][idx[1]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[1][idx[1]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[1]+=1; 
                     break;
                 case 9:
-                    busTime[2][idx[2]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[2][idx[2]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[2]+=1; 
                     break;
                 case 10:
-                    busTime[3][idx[3]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[3][idx[3]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[3]+=1; 
                     break;
                 case 11:
-                    busTime[4][idx[4]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[4][idx[4]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[4]+=1; 
                     break;
                 case 12:
-                    busTime[5][idx[5]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[5][idx[5]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[5]+=1; 
                     break;
                 case 13:
-                    busTime[6][idx[6]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[6][idx[6]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[6]+=1; 
                     break;
                 case 14:
-                    busTime[7][idx[7]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[7][idx[7]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[7]+=1; 
                     break;
                 case 15:
-                    busTime[8][idx[8]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[8][idx[8]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[8]+=1; 
                     break;
                 case 16:
-                    busTime[9][idx[9]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[9][idx[9]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[9]+=1; 
                     break;
                 case 17:
-                    busTime[10][idx[10]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[10][idx[10]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[10]+=1; 
                     break;
                 case 18:
-                    busTime[11][idx[11]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[11][idx[11]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[11]+=1; 
                     break;
                 case 19:
-                    busTime[12][idx[12]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[12][idx[12]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[12]+=1; 
                     break;
                 case 20:
-                    busTime[13][idx[13]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[13][idx[13]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[13]+=1; 
                     break;
                 case 21:
-                    busTime[14][idx[14]] = (JSON.stringify(dateTime.getHours(), null, 2) + ":" + JSON.stringify(dateTime.getMinutes(), null, 2));
+                    busTime[14][idx[14]] = (JSON.stringify(dateHour, null, 2) + ":" + JSON.stringify(dateMini, null, 2));
                     idx[14]+=1; 
                     break;
             }
@@ -152,4 +153,5 @@ document.getElementById('busForm').addEventListener('submit', async function(eve
 });
 function reserve(time, date){
     alert(time + "の予約が完了しました");
+
 }

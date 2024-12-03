@@ -5,39 +5,39 @@ body, html {
   place-items: center; /* 横・縦両方向の中央配置 */
 }
 #TimeTable{
-display: none;
-background-color: rgb(225, 145, 33);
-padding: 10px;
-width: 65%;
-text-align: center;
+  display: none;
+  background-color: rgb(225, 145, 33);
+  padding: 10px;
+  width: 65%;
+  text-align: center;
 }
 #TimeTable button{
-height: 4vw;
-width: 7vw;
-margin: 5px;
-font-size: 3vw;
+  height: 4vw;
+  width: 7vw;
+  margin: 5px;
+  font-size: 3vw;
 }
 .inputs{
-text-align: center;
+  text-align: center;
 }
 .odd{
-margin: 10px;
-padding-left: 0;
-padding-right: 0;
-padding-top: 0.5vw;
-padding-bottom: 0.5vw;
-background-color: whitesmoke;
+  margin: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  background-color: whitesmoke;
 }
 .even{
-margin: 10px;
-padding-top: 0.5vw;
-padding-bottom: 0.5vw;
-background-color: rgb(131, 131, 131);
+  margin: 10px;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  background-color: rgb(131, 131, 131);
 }
 .clock{
-display: inline;
-width: 0px;
-height: 100px;
-font-size: 3vw;
-margin-right: 5px;
+  display: inline;
+  width: 0px;
+  height: 100px;
+  font-size: 3vw;
+  margin-right: 5px;
 }
