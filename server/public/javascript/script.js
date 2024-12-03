@@ -13,7 +13,9 @@ document.getElementById('busForm').addEventListener('submit', async function(eve
     }).toString();
     // APIリクエストを送信
     try {
-        const response = await fetch(`http://localhost:3000/api/available_bus_stops?${queryParams}`, {
+        const productions_api_endpoint = 'https://web-client-api.onrender.com';
+        // const response = await fetch(`http://localhost:3000/api/available_bus_stops?${queryParams}`, {
+        const response = await fetch(`${productions_api_endpoint}/api/available_bus_stops?${queryParams}`, {
             method: 'GET', // indexメソッドに対応するのでGETリクエスト
             headers: {
                 'Content-Type': 'application/json',
@@ -150,8 +152,4 @@ document.getElementById('busForm').addEventListener('submit', async function(eve
         console.error('エラー:', error);
         document.getElementById('result').innerHTML = 'エラーが発生しました。';
     } 
-});
-function reserve(time, date){
-    alert(time + "の予約が完了しました");
-
-}
+    });
