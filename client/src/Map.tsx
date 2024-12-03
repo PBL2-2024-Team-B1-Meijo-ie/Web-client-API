@@ -89,7 +89,12 @@ export const Map: React.FC = () => {
     <MapContainer
       center={position}
       zoom={zoom}
-      style={{ height: "100vh", width: "100%" }}
+      style={{
+        margin: 0,
+        padding: 0,
+        height: "91vh",
+        width: "100vw", 
+      }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -12,9 +12,6 @@ function App() {
     <>
     <Head />
     <Map />
-    <Choice />
-    <Link to="/test">Test</Link>
-
 
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
