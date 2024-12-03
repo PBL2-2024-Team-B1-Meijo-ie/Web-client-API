@@ -1,18 +1,17 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Head from "./Head.tsx";
-import Choice from "./Choice.tsx";
-import { Map } from "./Map.tsx";
 import "./index.css";
+import App from "./App.tsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Test from "./Test.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Head />
-  </StrictMode>,
-);
-createRoot(document.getElementById("map")!).render(
-  <StrictMode>
-    <Map />
-    <Choice />
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App/>} />
+      <Route path="/test" element={<Test/>} />
+    </Routes>
+    </BrowserRouter>
   </StrictMode>,
 );
