@@ -1,7 +1,4 @@
-import { useState } from "react";
-import viteLogo from "/vite.svg";
-import reactLogo from "./assets/react.svg";
-import Test from "./Test.tsx";
+// import { useState } from "react";
 import "./App.css";
 import Head from "./Head.tsx";
 import Choice from "./Choice.tsx";
@@ -9,7 +6,7 @@ import { Map } from "./Map.tsx";
 import { Link } from "react-router";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <>
