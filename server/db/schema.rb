@@ -33,14 +33,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_18_020814) do
     t.text "startTime"
   end
 
+# Could not dump table "blebeecons" because of following StandardError
+#   Unknown type '' for column 'beecon_id'
+
   create_table "bus", id: false, force: :cascade do |t|
     t.integer "bus_id"
   end
 
-  create_table "bus_position", id: false, force: :cascade do |t|
+  create_table "bus_positions", id: false, force: :cascade do |t|
     t.integer "busposition_id"
-    t.text "lat"
-    t.text "lon"
+    t.float "lat"
+    t.float "lon"
     t.text "time"
   end
 
@@ -70,17 +73,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_18_020814) do
     t.integer "onbusstop_id"
     t.text "reserveTime"
     t.text "reserveDate"
-    t.integer "peopleCount"
   end
 
   create_table "users", id: false, force: :cascade do |t|
     t.integer "userid"
     t.text "mailed"
-  end
-
-  create_table "blebeecon", id: false, force: :cascade do |t|
-    t.integer "device_id"
-    t.integer "beecon_id"
   end
 
 end

@@ -1,6 +1,7 @@
 # 動作確認
 class Api::RaspiController < ApplicationController
     def create
+    def create
         ##ラズパイから送られる情報を変数に格納する
         #ラズパイから送られたデータを'JSON形式'で受け取る
         json_data = JSON.parse(request.body.read)
