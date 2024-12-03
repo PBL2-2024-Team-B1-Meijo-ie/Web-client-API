@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import { useLocation } from "react-router-dom";
 
 const BusSchedule: React.FC = () => {
+  const location = useLocation();
+  var {bus_id:busID} = location.state as {bus_id:number};
+  const busID_on = busID.toString();
+  
   const [busTime, setBusTime] = useState<string[][]>(Array(15).fill(null).map(() => Array(4).fill(null)));
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const busID_on = (document.getElementById('busID_on') as HTMLInputElement).value;
     const busID_off = (document.getElementById('busID_off') as HTMLInputElement).value;
     const date = (document.getElementById('date') as HTMLInputElement).value;
-
+    console.log(date);
+    console.log(busID_on);
     const queryParams = new URLSearchParams({
       busID_on,
       busID_off,
@@ -50,7 +55,9 @@ const BusSchedule: React.FC = () => {
       setBusTime(newBusTime);
     } catch (err: any) {
       console.error('エラー:', err);
-      setError('エラーが発生しました。');
+      if(busID_on == busID_off){
+        alert('乗車位置と降車位置が同じになっています');
+      }
     }
   };
 
@@ -65,9 +72,6 @@ const BusSchedule: React.FC = () => {
       <h1>バス予約</h1>
       <div className="inputs">
         <form id="busForm" onSubmit={handleSubmit}>
-          <label htmlFor="busID_on">乗車バス停ID:</label>
-          <input type="number" id="busID_on" required />
-
           <label htmlFor="busID_off">降車バス停ID:</label>
           <input type="number" id="busID_off" required />
 

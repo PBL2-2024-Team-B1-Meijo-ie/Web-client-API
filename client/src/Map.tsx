@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { useNavigate } from "react-router-dom"
 
 interface MarkerPosition {
   name: string;
@@ -11,6 +12,10 @@ interface MarkerPosition {
 };
 
 export const Map: React.FC = () => {
+  const navigate = useNavigate()
+  const handleClick = (bus_id:number) => {
+    navigate("/test", { state: { bus_id } })
+  }
   const position: [number, number] = [35.13589, 136.97564]; //名城大学天白キャンパスの座標
   const zoom = 16;
 
@@ -38,6 +43,9 @@ export const Map: React.FC = () => {
         <Marker position={marker.position} key={index}>
         <Popup>
           {marker.name} <br /> {marker.discription}
+          <button onClick={()=>{
+            handleClick(index + 1);
+          }}>予約はこちらから</button>
         </Popup>
       </Marker>
       )
