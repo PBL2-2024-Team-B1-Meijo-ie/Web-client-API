@@ -1,12 +1,12 @@
 # 動作確認
 class Api::RaspiController < ApplicationController
-    def index
+    def create
         ##ラズパイから送られる情報を変数に格納する
         #ラズパイから送られたデータを'params'で受け取る
         buspositionID = params[:buspositionID].to_i
-        lat = params[:lat].to_i
-        lon = params[:lon].to_i
-        time = params[:time].to_i
+        lat = params[:lat].to_f
+        lon = params[:lon].to_f
+        time = params[:time]
 
         #変数にデータが
         if buspositionID.nil? || lat.nil? || lon.nil? || time.nil?
