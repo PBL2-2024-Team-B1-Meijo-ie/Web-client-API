@@ -1,9 +1,10 @@
 class Api::BlebeeconController < ApplicationController
-    def index
+    def create
         ##アプリ側から送られるビーコンのデータを格納する
         #アプリから送られたデータを'params'で受け取る
-        beeconID=params[:beeconID].to_i
-        deviceID=params[:deviceID].to_i
+        json_data = JSON.parse(request.body.read)
+        beeconID= json_data["beeconID"].to_i
+        deviceID= json_data["deviceID"].to_i
 
         #変数にデータが存在するか判定
         if beeconID.nil? || deviceID.nil?
