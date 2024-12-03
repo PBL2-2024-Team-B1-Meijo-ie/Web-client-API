@@ -5,51 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>バス停情報取得</title>
     <link rel="icon" href="<%= asset_path('favicon.ico') %>" />
+    <link rel="stylesheet" href="style.css">
     <script src="/javascript/script.js" defer></script>
-    <style>
-      body, html {
-            height: 100%; /* 高さを100%に設定 */
-            margin: 0; /* デフォルトのマージンをリセット */
-            display: grid;
-            place-items: center; /* 横・縦両方向の中央配置 */
-        }
-      #TimeTable{
-        display: none;
-        background-color: rgb(225, 145, 33);
-        padding: 10px;
-        width: 65%;
-        text-align: center;
-      }
-      #TimeTable button{
-        height: 4vw;
-        width: 7vw;
-        margin: 5px;
-      }
-      .inputs{
-        text-align: center;
-      }
-      .odd{
-        margin: 10px;
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0.5vw;
-        padding-bottom: 0.5vw;
-        background-color: whitesmoke;
-      }
-      .even{
-        margin: 10px;
-        padding-top: 0.5vw;
-        padding-bottom: 0.5vw;
-        background-color: rgb(131, 131, 131);
-      }
-      .clock{
-        display: inline;
-        width: 0px;
-        height: 100px;
-        font-size: 3vw;
-        margin-right: 5px;
-      }
-    </style>
   </head>
   <body>
     <h1>バス予約</h1>
