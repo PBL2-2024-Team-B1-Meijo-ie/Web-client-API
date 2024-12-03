@@ -9,7 +9,7 @@ class Api::BusesController < ApplicationController
       return
     end
       # `peopleCount` が0でない、かつ指定された予約日のデータを取得→できてない
-    records=Storage.where.not(peopleCount:0).where(ReserveDate:reserveDate)
+    records=Storage.where(ReserveDate:reserveDate)
     # 取得したデータをJSON形式で返却
     render json: { start_times: records }
   end

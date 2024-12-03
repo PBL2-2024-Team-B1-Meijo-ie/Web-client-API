@@ -13,9 +13,9 @@
     }).toString();
     // APIリクエストを送信
     try {
-        const productin_api_endpoint = 'https://web-client-api.onrender.com';
+        const productions_api_endpoint = 'https://web-client-api.onrender.com';
         // const response = await fetch(`http://localhost:3000/api/available_bus_stops?${queryParams}`, {
-        const response = await fetch(`${productin_api_endpoint}/api/available_bus_stops?${queryParams}`, {
+        const response = await fetch(`${productions_api_endpoint}/api/available_bus_stops?${queryParams}`, {
             method: 'GET', // indexメソッドに対応するのでGETリクエスト
             headers: {
                 'Content-Type': 'application/json',
