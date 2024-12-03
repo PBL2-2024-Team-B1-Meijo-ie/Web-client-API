@@ -1,6 +1,6 @@
 /* このサイトから引用，その後ChatGPTでtsx形式に改変 https://zenn.dev/micronn/articles/776c702089f16e */
 
-import React, { useEffect } from "react";
+import React from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useNavigate } from "react-router-dom"
@@ -20,8 +20,8 @@ export const Map: React.FC = () => {
   const zoom = 16;
 
   //マーカー増やすたびに変数増やす
-  const marker_position1 = [35.1336162, 136.9739735]; //名城大学天白キャンパス前のローソンの座標
-  const marker_position2 = [35.1536162, 136.9939735];
+  // const marker_position1 = [35.1336162, 136.9739735]; //名城大学天白キャンパス前のローソンの座標
+  // const marker_position2 = [35.1536162, 136.9939735];
 
 
   const marker_info_vec = [

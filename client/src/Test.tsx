@@ -8,6 +8,7 @@ const BusSchedule: React.FC = () => {
   
   const [busTime, setBusTime] = useState<string[][]>(Array(15).fill(null).map(() => Array(4).fill(null)));
   const [error, setError] = useState<string | null>(null);
+  console.log(setError);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
