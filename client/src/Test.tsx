@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation } from "react-router-dom";
 
+const REQUEST_URL = import.meta.env.VITE_API_URL;
+
 const BusSchedule: React.FC = () => {
   const location = useLocation();
-  var {bus_id:busID} = location.state as {bus_id:number};
+  const {bus_id:busID} = location.state as {bus_id:number};
   const busID_on = busID.toString();
-  
   const [busTime, setBusTime] = useState<string[][]>(Array(15).fill(null).map(() => Array(4).fill(null)));
   const [error, setError] = useState<string | null>(null);
   console.log(setError);
@@ -24,7 +25,8 @@ const BusSchedule: React.FC = () => {
     }).toString();
 
     try {
-      const response = await fetch(`http://localhost:3000/api/available_bus_stops?${queryParams}`, {
+      const url = `${REQUEST_URL}/api/available_bus_stops?${queryParams}`;
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
