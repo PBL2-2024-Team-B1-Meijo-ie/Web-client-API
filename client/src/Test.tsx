@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from "react-router-dom";
+import { data, useLocation } from "react-router-dom";
 
 const BusSchedule: React.FC = () => {
   const location = useLocation();
@@ -61,20 +61,12 @@ const BusSchedule: React.FC = () => {
   };
 
   const handleReserve = (time: string, date: string) => {
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-
-    if (!email) {
-      alert('メールアドレスを入力してください。');
-      return;
-    }
-
     const reservationDetails = {
-      email,
       date,
       time,
     };
 
-    fetch('http://localhost:3000/api/reserve', {
+    fetch(`http://localhost:3000/api/reservations`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -83,7 +75,7 @@ const BusSchedule: React.FC = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error('予約に失敗しました。１');
+          throw new Error('予約に失敗しました。1');
         }
         return response.json();
       })
@@ -94,7 +86,7 @@ const BusSchedule: React.FC = () => {
       })
       .catch((err) => {
         console.error('エラー:', err);
-        alert('予約に失敗しました。２');
+        alert('予約に失敗しました。2');
       });
   };
 
@@ -108,9 +100,6 @@ const BusSchedule: React.FC = () => {
 
           <label htmlFor="date">日付:</label>
           <input type="date" id="date" required />
-
-          <label htmlFor="email">メールアドレス:</label>
-          <input type="email" id="email" required />
 
           <button type="submit">情報取得</button>
         </form>
