@@ -6,7 +6,7 @@ const REQUEST_URL = import.meta.env.VITE_API_URL;
 const BusSchedule: React.FC = () => {
   const location = useLocation();
   const {bus_id:busID} = location.state as {bus_id:number};
-  const busID_on = busID.toString();
+  let busID_on_st = busID.toString();
   const [busTime, setBusTime] = useState<string[][]>(Array(15).fill(null).map(() => Array(4).fill(null)));
   const [error, setError] = useState<string | null>(null);
 
@@ -17,7 +17,7 @@ const BusSchedule: React.FC = () => {
     const date = (document.getElementById('date') as HTMLInputElement).value;
 
     const queryParams = new URLSearchParams({
-      busID_on,
+      busID_on: busID_on_st,
       busID_off,
       date,
     }).toString();
@@ -57,14 +57,16 @@ const BusSchedule: React.FC = () => {
       setBusTime(newBusTime);
     } catch (err: any) {
       console.error('エラー:', err);
-      if (busID_on === busID_off) {
+      if (busID_on_st === busID_off) {
         alert('乗車位置と降車位置が同じになっています');
       }
     }
   };
 
   const handleReserve = (time: String, date: String) => {
-    const busID_off = (document.getElementById('busID_off') as HTMLInputElement).value;
+    let busID_off_st = (document.getElementById('busID_off') as HTMLInputElement).value;
+    let busID_on = Number(busID_on_st)
+    let busID_off = Number(busID_off_st)
     const reservationDetails = {
       busID_on,
       busID_off,
@@ -78,7 +80,12 @@ const BusSchedule: React.FC = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(reservationDetails),
+      body: JSON.stringify({
+        busID_on: busID_on,
+        busID_off: busID_off,
+        date: date,
+        time: time
+      }),
     })
       .then((response) => {
         if (!response.ok) {
