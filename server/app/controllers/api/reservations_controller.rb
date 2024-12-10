@@ -2,10 +2,10 @@
 class Api::ReservationsController < ApplicationController
   def index
     # リクエストパラメータを取得
-    busID_on=session[:shared_onID]# 出発バス停ID
-    busID_off=session[:shared_offID]# 到着バス停ID
+    busID_on=params[:busID_on].to_i# 出発バス停ID
+    busID_off=params[:busID_off].to_i# 到着バス停ID
     date=params[:date] # 予約日
-    departure_time_str = params[:departure_time]   # 出発時刻（文字列形式, 例: "14:30"）
+    departure_time_str = params[:time]   # 出発時刻（文字列形式, 例: "14:30"）
     # 出発時刻が指定されているか確認
     if departure_time_str.present?
       departure_time = Time.parse(departure_time_str)  # 時間をTimeオブジェクトに変換

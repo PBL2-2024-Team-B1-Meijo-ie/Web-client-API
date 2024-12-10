@@ -60,12 +60,19 @@ const BusSchedule: React.FC = () => {
     }
   };
 
-  const handleReserve = (time: string, date: string) => {
+  const handleReserve = (time: String, date: String) => {
+    const busID_off = (document.getElementById('busID_off') as HTMLInputElement).value;
+    console.log(busID_on)
+    console.log(busID_off)
+    console.log(time)
+    console.log(date)
     const reservationDetails = {
+      busID_on,
+      busID_off,
       date,
       time,
-    };
-
+    }.toString();
+    console.dir(`http://localhost:3000/api/reservations?${reservationDetails}`,{depth: null});
     fetch(`http://localhost:3000/api/reservations`, {
       method: 'POST',
       headers: {
