@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 interface MarkerPosition {
   name: string;
-  discription: string;
+  description: string;
   position: [number, number];
 };
 
@@ -27,12 +27,12 @@ export const Map: React.FC = () => {
   const marker_info_vec = [
     {
       name: "ローソン",
-      discription: "コンビニ前",
+      description: "コンビニ前",
       position: [35.1336162, 136.9739735],
     } as MarkerPosition,
     {
       name: "セブンイレブン",
-      discription: "二つ目",
+      description: "二つ目",
       position: [35.1536162, 136.9939735],
     } as MarkerPosition,
   ];
@@ -42,7 +42,7 @@ export const Map: React.FC = () => {
       return (
         <Marker position={marker.position} key={index}>
         <Popup>
-          {marker.name} <br /> {marker.discription}
+          {marker.name} <br /> {marker.description}
           <button onClick={()=>{
             handleClick(index + 1);
           }}>予約はこちらから</button>

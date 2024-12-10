@@ -7,7 +7,7 @@ import Test from "./Test.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.DEV ? "/": "Web-client-API"}>
     <Routes>
       <Route path="/" element={<App/>} />
       <Route path="/test" element={<Test/>} />
