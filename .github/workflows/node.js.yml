@@ -21,6 +21,9 @@ jobs:
         node-version: [22.9]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
+    env:
+      VITE_API_URL: "https://web-client-api.onrender.com/"
+
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
