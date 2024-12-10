@@ -2,12 +2,9 @@
 class Api::AvailableBusStopsController < ApplicationController
   def index
     # フォームやAJAXリクエストから送信されたデータをparamsで受け取る
-    session[:shared_onID]=params[:busID_on].to_i # 出発バス停ID & session関数で一時保存
-    session[:shared_offID]=params[:busID_off].to_i # 到着バス停ID & session関数で一時保存
+    busID_on=params[:busID_on].to_i # 出発バス停ID 
+    busID_off=params[:busID_off].to_i # 到着バス停ID
     date=params[:date] # 予約日
-
-    busID_on=session[:shared_onID]
-    busID_off=session[:shared_offID]
 
     # 必要なパラメータが不足している場合はエラーを返す
     if busID_on.nil? || busID_off.nil? || date.nil?
