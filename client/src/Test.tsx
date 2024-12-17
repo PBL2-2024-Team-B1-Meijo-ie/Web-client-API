@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { data, useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 
 const REQUEST_URL = import.meta.env.VITE_API_URL;
 
@@ -9,6 +9,7 @@ const BusSchedule: React.FC = () => {
   let busID_on_st = busID.toString();
   const [busTime, setBusTime] = useState<string[][]>(Array(15).fill(null).map(() => Array(4).fill(null)));
   const [error, setError] = useState<string | null>(null);
+  console.log(setError);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -94,6 +95,7 @@ const BusSchedule: React.FC = () => {
         return response.json();
       })
       .then((data) => {
+        console.dir(data, {depth: null});
         const [year, month, day] = date.split('-');
         const formattedDate = `${year}年${Number(month)}月${Number(day)}日`;
         alert(`${formattedDate} ${time} の予約が完了しました。`);
