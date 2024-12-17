@@ -5,6 +5,9 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useNavigate } from "react-router-dom"
 
+import L from 'leaflet'
+L.Icon.Default.imagePath = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/'
+
 interface MarkerPosition {
   name: string;
   description: string;
@@ -53,42 +56,11 @@ export const Map: React.FC = () => {
     return marker;
   };
 
-  // useEffect(() => {
-  //   // マップの初期化とオプションの設定
-  //   const map = L.map("map", {
-  //     center: position,
-  //     zoom: zoom,
-  //   });
-  // }
-
-  //   // タイルレイヤーの追加
-  //   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //     attribution:
-  //       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  //   }).addTo(map);
-
-  //   // マーカーの追加　マーカー増やすときは変数名も新しく作る
-  //   const marker1 = L.marker(marker_position1).addTo(map);
-  //   marker1.bindPopup(
-  //     'コンビニ前<br/><a href="http://127.0.0.1:3000/?" target="_blank" rel="noopener noreferrer">予約はこちら</a>'
-  //   ); //とりあえずaタグで作成する
-
-  //   const marker2 = L.marker(marker_position2).addTo(map);
-  //   marker2.bindPopup(
-  //     '二つ目<br/><a href="http://127.0.0.1:3000/?" target="_blank" rel="noopener noreferrer">予約はこちら</a>'
-  //   );
-
-  //   // コンポーネントのアンマウント時にマップインスタンスを削除
-  //   return () => {
-  //     map.remove();
-  //   };
-  // }, [position, zoom]);
-
-  // return <div id="map" style={{ height: '100vh', width: '100%' }} />;//地図のサイズを変更できる
   return (
     <MapContainer
       center={position}
       zoom={zoom}
+      scrollWheelZoom={false}
       style={{
         margin: 0,
         padding: 0,
@@ -101,11 +73,6 @@ export const Map: React.FC = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {markers(marker_info_vec)}
-      {/* <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker> */}
     </MapContainer>
   );
 };
