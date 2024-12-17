@@ -53,7 +53,8 @@ export const Map: React.FC = () => {
       return (
         <Marker position={[bus_stop.lat, bus_stop.lon]} key={index}>
         <Popup>
-          {bus_stop.bus_name} <br /> {bus_stop.bus_id}
+          {bus_stop.bus_name}   バス停ID: {bus_stop.bus_id}
+          <br /> 
           <button onClick={()=>{
             handleClick(bus_stop.bus_id);
           }}>予約はこちらから</button>
