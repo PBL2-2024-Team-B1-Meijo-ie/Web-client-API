@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useNavigate } from "react-router-dom"
 import useGetBusStops from './hooks/useGetBusStops';
+import useChoiceBusStops from "./hooks/useChoiceBusStops";
 import BusStop from "./types/bus_stops";
 
 import L from 'leaflet'
@@ -18,8 +19,8 @@ L.Icon.Default.imagePath = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1
 
 export const Map: React.FC = () => {
   const navigate = useNavigate()
-  const handleClick = (bus_id:number) => {
-    navigate("/test", { state: { bus_id } })
+  const handleClick = (gettitng_on_bus_id:number, gettitng_off_bus_id:number) => {
+    navigate("/test", { state: { gettitng_on_bus_id, gettitng_off_bus_id } })
   }
   // const position: [number, number] = [35.13589, 136.97564]; //名城大学天白キャンパスの座標
   const position: [number, number] = [35.15886535903617, 137.64069353868888]; // 設楽町の座標
@@ -33,6 +34,7 @@ export const Map: React.FC = () => {
     console.log(busStops);
     console.log(loading);
     console.log(busStopsError);
+    const {gettingOnBusStop, gettingOffBusStop, setGettingOnBusStop, setGettingOffBusStop} = useChoiceBusStops();
   
 
   // const marker_info_vec = [
@@ -55,9 +57,15 @@ export const Map: React.FC = () => {
         <Popup>
           {bus_stop.bus_name}   バス停ID: {bus_stop.bus_id}
           <br /> 
-          <button onClick={()=>{
+          {/* <button onClick={()=>{
             handleClick(bus_stop.bus_id);
-          }}>予約はこちらから</button>
+          }}>予約はこちらから</button> */}
+          <button onClick={()=>{
+            setGettingOnBusStop(bus_stop.bus_id);
+          }}>ここから乗車する</button>
+          <button onClick={()=>{
+            setGettingOffBusStop(bus_stop.bus_id);
+          }}>ここで降車する</button>
         </Popup>
       </Marker>
       )
@@ -66,22 +74,53 @@ export const Map: React.FC = () => {
   };
 
   return (
-    <MapContainer
-      center={position}
-      zoom={zoom}
-      scrollWheelZoom={false}
-      style={{
-        margin: 0,
-        padding: 0,
-        height: "91vh",
-        width: "100vw", 
-      }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {markers(busStops)}
-    </MapContainer>
+    <>
+      <BusStopSelection gettingOnBusStop={gettingOnBusStop} gettingOffBusStop={gettingOffBusStop} onReserveClick={()=>{
+        if (gettingOnBusStop !== null && gettingOffBusStop !== null) {
+          handleClick(gettingOnBusStop, gettingOffBusStop)
+        } else{
+          alert("バス停を選択してください");
+        }
+        }} />
+
+      <MapContainer
+        center={position}
+        zoom={zoom}
+        scrollWheelZoom={false}
+        style={{
+          margin: 0,
+          padding: 0,
+          height: "91vh",
+          width: "100vw", 
+        }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        {markers(busStops)}
+      </MapContainer>
+    </>
+  );
+};
+
+interface BusStopSelectionProps {
+  gettingOnBusStop: number | null;
+  gettingOffBusStop: number | null;
+  onReserveClick: () => void;
+}
+
+const BusStopSelection: React.FC<BusStopSelectionProps> = ({ gettingOnBusStop, gettingOffBusStop, onReserveClick }) => {
+  return (
+    <div>
+      <p>乗車バス停: {gettingOnBusStop !== null ? gettingOnBusStop : '未選択'}</p>
+      <p>降車バス停: {gettingOffBusStop !== null ? gettingOffBusStop : '未選択'}</p>
+      <button
+        onClick={onReserveClick}
+        disabled={gettingOnBusStop === null || gettingOffBusStop === null}
+      >
+        予約時間を選ぶ
+      </button>
+    </div>
   );
 };
