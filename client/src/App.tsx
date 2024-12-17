@@ -1,9 +1,8 @@
 // import { useState } from "react";
 import "./App.css";
 import Head from "./Head.tsx";
-import Choice from "./Choice.tsx";
 import { Map } from "./Map.tsx";
-import { Link } from "react-router-dom";
+
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -12,9 +11,6 @@ function App() {
     <>
     <Head />
     <Map />
-    <Choice />
-    <Link to="/test">Test</Link>
-
 
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">

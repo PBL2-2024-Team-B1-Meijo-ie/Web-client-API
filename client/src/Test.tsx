@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 
 const REQUEST_URL = import.meta.env.VITE_API_URL;
 
 const BusSchedule: React.FC = () => {
   const location = useLocation();
   const {bus_id:busID} = location.state as {bus_id:number};
-  const busID_on = busID.toString();
+  let busID_on_st = busID.toString();
   const [busTime, setBusTime] = useState<string[][]>(Array(15).fill(null).map(() => Array(4).fill(null)));
   const [error, setError] = useState<string | null>(null);
   console.log(setError);
@@ -16,16 +16,16 @@ const BusSchedule: React.FC = () => {
 
     const busID_off = (document.getElementById('busID_off') as HTMLInputElement).value;
     const date = (document.getElementById('date') as HTMLInputElement).value;
-    console.log(date);
-    console.log(busID_on);
+
     const queryParams = new URLSearchParams({
-      busID_on,
+      busID_on: busID_on_st,
       busID_off,
       date,
     }).toString();
 
     try {
       const url = `${REQUEST_URL}/api/available_bus_stops?${queryParams}`;
+      console.log(url)
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -58,16 +58,52 @@ const BusSchedule: React.FC = () => {
       setBusTime(newBusTime);
     } catch (err: any) {
       console.error('エラー:', err);
-      if(busID_on == busID_off){
+      if (busID_on_st === busID_off) {
         alert('乗車位置と降車位置が同じになっています');
       }
     }
   };
 
-  const handleReserve = (time: string, date: string) => {
-    const [year, month, day] = date.split('-');
-    const formattedDate = `${year}年${Number(month)}月${Number(day)}日`;
-    alert(`${formattedDate}${time}の予約が完了しました`);
+  const handleReserve = (time: String, date: String) => {
+    let busID_off_st = (document.getElementById('busID_off') as HTMLInputElement).value;
+    let busID_on = Number(busID_on_st)
+    let busID_off = Number(busID_off_st)
+    const reservationDetails = {
+      busID_on,
+      busID_off,
+      date,
+      time,
+    };
+    console.dir(reservationDetails, {depth: null})
+    console.dir(`http://localhost:3000/api/reservations?${reservationDetails}`,{depth: null});
+    fetch(`http://localhost:3000/api/reservations`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        busID_on: busID_on,
+        busID_off: busID_off,
+        date: date,
+        time: time
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('予約に失敗しました。1');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.dir(data, {depth: null});
+        const [year, month, day] = date.split('-');
+        const formattedDate = `${year}年${Number(month)}月${Number(day)}日`;
+        alert(`${formattedDate} ${time} の予約が完了しました。`);
+      })
+      .catch((err) => {
+        console.error('エラー:', err);
+        alert('予約に失敗しました。2');
+      });
   };
 
   return (
