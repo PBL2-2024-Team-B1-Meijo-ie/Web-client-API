@@ -75,8 +75,8 @@ const BusSchedule: React.FC = () => {
       time,
     };
     console.dir(reservationDetails, {depth: null})
-    console.dir(`http://localhost:3000/api/reservations?${reservationDetails}`,{depth: null});
-    fetch(`http://localhost:3000/api/reservations`, {
+    console.dir(`${REQUEST_URL}/api/reservations?${reservationDetails}`,{depth: null});
+    fetch(`${REQUEST_URL}/api/reservations`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
