@@ -7,6 +7,7 @@ class Api::ReservationsController < ApplicationController
     busID_off=json_data[:busID_off].to_i# 到着バス停ID
     date=json_data[:date] # 予約日
     departure_time_str = json_data[:time]   # 出発時刻（文字列形式, 例: "14:30"）
+
     # 出発時刻が指定されているか確認
     if departure_time_str.present?
       departure_time = Time.parse(departure_time_str)  # 時間をTimeオブジェクトに変換
@@ -94,10 +95,13 @@ class Api::ReservationsController < ApplicationController
   def create
     # リクエストパラメータを取得
     json_data = JSON.parse(request.body.read)
-    busID_on=json_data[:busID_on].to_i# 出発バス停ID
-    busID_off=json_data[:busID_off].to_i# 到着バス停ID
-    date=json_data[:date] # 予約日
-    departure_time_str = json_data[:time]   # 出発時刻（文字列形式, 例: "14:30"）
+    # リクエストパラメータを表示
+    puts json_data
+    
+    busID_on=json_data["busID_on"].to_i# 出発バス停ID
+    busID_off=json_data["busID_off"].to_i# 到着バス停ID
+    date=json_data["date"] # 予約日
+    departure_time_str = json_data["time"]   # 出発時刻（文字列形式, 例: "14:30"）
     # 出発時刻が指定されているか確認
     puts "time#{departure_time_str}"
     puts "buson#{busID_on}"
