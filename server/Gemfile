@@ -63,3 +63,6 @@ gem 'bigdecimal'
 gem 'mutex_m'
 gem 'drb'
 gem 'rack-cors'
+
+# dotenv
+gem 'dotenv-rails'
