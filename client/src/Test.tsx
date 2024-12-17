@@ -5,7 +5,7 @@ const REQUEST_URL = import.meta.env.VITE_API_URL;
 
 const BusSchedule: React.FC = () => {
   const location = useLocation();
-  const { gettitng_on_bus_id, gettitng_off_bus_id } = location.state as {gettitng_on_bus_id:number, gettitng_off_bus_id:number};
+  const { gettitng_on_bus_id, on_busstop_name, gettitng_off_bus_id, off_busstop_name } = location.state as {gettitng_on_bus_id:number, on_busstop_name: string, gettitng_off_bus_id:number, off_busstop_name: string};
   // let busID_on_st = busID.toString();
   const [busTime, setBusTime] = useState<string[][]>(Array(15).fill(null).map(() => Array(4).fill(null)));
   const [error, setError] = useState<string | null>(null);
@@ -110,8 +110,8 @@ const BusSchedule: React.FC = () => {
     <div id="Test">
       <h1>バス予約</h1>
       <div className="inputs">
-        <p>乗車位置: {gettitng_on_bus_id}</p>
-        <p>降車位置: {gettitng_off_bus_id}</p>
+        <p>乗車位置: {gettitng_on_bus_id}: {on_busstop_name}</p>
+        <p>降車位置: {gettitng_off_bus_id}: {off_busstop_name}</p>
         <form id="busForm" onSubmit={handleSubmit}>
           {/* <label htmlFor="busID_off">降車バス停ID:</label>
           <input type="number" id="busID_off" required /> */}

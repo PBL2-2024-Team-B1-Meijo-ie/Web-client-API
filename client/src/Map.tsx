@@ -19,8 +19,8 @@ L.Icon.Default.imagePath = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1
 
 export const Map: React.FC = () => {
   const navigate = useNavigate()
-  const handleClick = (gettitng_on_bus_id:number, gettitng_off_bus_id:number) => {
-    navigate("/test", { state: { gettitng_on_bus_id, gettitng_off_bus_id } })
+  const handleClick = (gettitng_on_bus_id:number, on_busstop_name: string, gettitng_off_bus_id:number, off_busstop_name: string) => {
+    navigate("/test", { state: { gettitng_on_bus_id, on_busstop_name, gettitng_off_bus_id,off_busstop_name, } })
   }
   // const position: [number, number] = [35.13589, 136.97564]; //名城大学天白キャンパスの座標
   const position: [number, number] = [35.15886535903617, 137.64069353868888]; // 設楽町の座標
@@ -34,8 +34,9 @@ export const Map: React.FC = () => {
     console.log(busStops);
     console.log(loading);
     console.log(busStopsError);
-    const {gettingOnBusStop, gettingOffBusStop, setGettingOnBusStop, setGettingOffBusStop} = useChoiceBusStops();
+    const {gettingOnBusStop, gettingOnBusStopName ,gettingOffBusStop, gettingOffBusStopName ,setGettingOnBusStop, setGettingOffBusStop} = useChoiceBusStops(busStops);
   
+
 
   // const marker_info_vec = [
   //   {
@@ -75,9 +76,9 @@ export const Map: React.FC = () => {
 
   return (
     <>
-      <BusStopSelection gettingOnBusStop={gettingOnBusStop} gettingOffBusStop={gettingOffBusStop} onReserveClick={()=>{
-        if (gettingOnBusStop !== null && gettingOffBusStop !== null) {
-          handleClick(gettingOnBusStop, gettingOffBusStop)
+      <BusStopSelection gettingOnBusStop={gettingOnBusStop} gettingOnBusStopName={gettingOnBusStopName} gettingOffBusStop={gettingOffBusStop} gettingOffBusStopName={gettingOffBusStopName} onReserveClick={()=>{
+        if (gettingOnBusStop !== null && gettingOffBusStop !== null && gettingOnBusStopName !== null && gettingOffBusStopName !== null){ 
+          handleClick(gettingOnBusStop,gettingOnBusStopName, gettingOffBusStop, gettingOffBusStopName);
         } else{
           alert("バス停を選択してください");
         }
@@ -106,15 +107,18 @@ export const Map: React.FC = () => {
 
 interface BusStopSelectionProps {
   gettingOnBusStop: number | null;
+  gettingOnBusStopName: string | null;
   gettingOffBusStop: number | null;
+  gettingOffBusStopName: string | null;
   onReserveClick: () => void;
 }
 
-const BusStopSelection: React.FC<BusStopSelectionProps> = ({ gettingOnBusStop, gettingOffBusStop, onReserveClick }) => {
+const BusStopSelection: React.FC<BusStopSelectionProps> = ({  gettingOnBusStop, gettingOnBusStopName, gettingOffBusStop, gettingOffBusStopName, onReserveClick }) => {
+
   return (
     <div>
-      <p>乗車バス停: {gettingOnBusStop !== null ? gettingOnBusStop : '未選択'}</p>
-      <p>降車バス停: {gettingOffBusStop !== null ? gettingOffBusStop : '未選択'}</p>
+      <p>乗車バス停: {gettingOnBusStop !== null ? gettingOnBusStop : '未選択'}: {gettingOnBusStopName}</p>
+      <p>降車バス停: {gettingOffBusStop !== null ? gettingOffBusStop : '未選択'}: {gettingOffBusStopName}</p>
       <button
         onClick={onReserveClick}
         disabled={gettingOnBusStop === null || gettingOffBusStop === null}
