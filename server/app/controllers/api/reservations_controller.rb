@@ -171,7 +171,11 @@ class Api::ReservationsController < ApplicationController
     user=User.find_by(userid:1)
     if user&.mailed.present?
       begin
-        ReservationMailer.with(email:user.mailed, godef_on:godef_on, godef_off:godef_off, arrival_time:formatted_arrival_time).template_sentence.deliver_now
+        puts "mail start"
+        # 環境変数からメールアドレスを取得
+        mail_address = ENV['MAIL_ADDRESS']
+        ReservationMailer.with(email:mail_address, godef_on:godef_on, godef_off:godef_off, arrival_time:formatted_arrival_time).template_sentence.deliver_now!
+        puts "mail end"
 
       rescue StandardError =>e
         # メール送信失敗時のエラーレスポンス

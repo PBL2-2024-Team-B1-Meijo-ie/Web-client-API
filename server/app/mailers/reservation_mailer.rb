@@ -1,5 +1,5 @@
 class ReservationMailer < ApplicationMailer
-  default from: 'no-reply@example.com'
+  default from: 'onboarding@resend.dev'
 
   def template_sentence
     @godef_on=params[:godef_on]
