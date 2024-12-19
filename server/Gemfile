@@ -66,3 +66,5 @@ gem 'rack-cors'
 
 # dotenv
 gem 'dotenv-rails'
+
+gem 'resend'

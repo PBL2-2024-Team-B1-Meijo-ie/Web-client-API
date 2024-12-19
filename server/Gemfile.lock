@@ -73,6 +73,7 @@ GEM
     builder (3.3.0)
     concurrent-ruby (1.3.4)
     crass (1.0.6)
+    csv (3.3.1)
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
@@ -85,6 +86,10 @@ GEM
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -105,6 +110,8 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.1)
     msgpack (1.7.3)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     mutex_m (0.2.0)
     net-imap (0.5.0)
       date
@@ -166,6 +173,8 @@ GEM
       psych (>= 4.0.0)
     reline (0.5.10)
       io-console (~> 0.5)
+    resend (0.15.0)
+      httparty (>= 0.21.0)
     sqlite3 (1.7.3-x64-mingw-ucrt)
     sqlite3 (1.7.3-x86_64-linux)
     stringio (3.1.1)
@@ -198,6 +207,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.3)
+  resend
   sqlite3 (~> 1.4)
   tzinfo-data
 
