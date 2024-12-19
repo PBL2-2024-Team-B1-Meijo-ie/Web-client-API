@@ -9,6 +9,8 @@ body{
   font-size: 30px;
   background-color: rgb(164, 150, 176);
   margin: 0;
+  display: grid;
+  grid-template-columns: auto auto;  
 }
 .Title1{
   padding: 0;

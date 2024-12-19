@@ -166,7 +166,14 @@ class Api::ReservationsController < ApplicationController
       reserveTime: departure_time_str,
       reserveDate: date,
     )
-
+    if new_record.save
+      # レコードが正常に保存された場合の処理
+      puts "新しいレコードが保存されました"
+    else
+      # レコードが保存されなかった場合のエラーレスポンス
+      render json: { error: "レコードの保存に失敗しました" }, status: :internal_server_error
+      return
+    end
     #メール送信処理
     user=User.find_by(userid:1)
     if user&.mailed.present?
